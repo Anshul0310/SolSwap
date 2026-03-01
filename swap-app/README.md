@@ -1,5 +1,5 @@
 
-<h1 align="center">⬡ SolSwap — Swap in the Shadows</h1>
+<h1 align="center">⬡ SolSwap</h1>
 
 <p align="center">
   <strong>A sleek, cyberpunk-themed Solana token swap interface & Telegram Bot powered by Jupiter.</strong>

@@ -1,4 +1,4 @@
-# SolSwap — Swap in the Shadows 🌑
+# SolSwap 🌑
 
 Welcome to **SolSwap**, a comprehensive token swap ecosystem built on Solana. Designed to provide a fast, deep, and seamless swapping experience, SolSwap leverages Jupiter's powerful decentralized exchange infrastructure across two main platforms: a sleek web interface and a lightning-fast Telegram bot.
 
@@ -39,4 +39,4 @@ To get started with either component:
 3. Install dependencies and run the respective `dev` or `start` scripts.
 
 ---
-*Swap tokens in the shadows. Powered by Jupiter.*
+*Powered by Jupiter.*
