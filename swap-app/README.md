@@ -1,6 +1,3 @@
-<p align="center">
-  <img src="preview.png" alt="SolSwap Preview" width="100%" />
-</p>
 
 <h1 align="center">⬡ SolSwap — Swap in the Shadows</h1>
 
