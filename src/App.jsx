@@ -1,5 +1,3 @@
-import { useEffect, useRef } from 'react';
-import anime from 'animejs';
 import { SwapCard } from './components/SwapCard';
 
 // Wallet adapter imports
@@ -11,54 +9,6 @@ import {
 import '@solana/wallet-adapter-react-ui/styles.css';
 
 function App() {
-    const headerRef = useRef(null);
-    const heroRef = useRef(null);
-
-    const statsRef = useRef(null);
-    const tagsRef = useRef(null);
-    const cardRef = useRef(null);
-
-    useEffect(() => {
-        // anime.js staggered entrance
-        const tl = anime.timeline({
-            easing: 'easeOutExpo',
-            duration: 900,
-        });
-
-        tl.add({
-            targets: headerRef.current,
-            opacity: [0, 1],
-            translateY: [-20, 0],
-            duration: 600,
-        })
-            .add({
-                targets: heroRef.current?.children,
-                opacity: [0, 1],
-                translateX: [-40, 0],
-                delay: anime.stagger(120),
-            }, '-=400')
-
-            .add({
-                targets: statsRef.current?.children,
-                opacity: [0, 1],
-                translateY: [16, 0],
-                delay: anime.stagger(100),
-            }, '-=400')
-            .add({
-                targets: tagsRef.current?.children,
-                opacity: [0, 1],
-                scale: [0.9, 1],
-                delay: anime.stagger(60),
-            }, '-=400')
-            .add({
-                targets: cardRef.current,
-                opacity: [0, 1],
-                translateX: [50, 0],
-                scale: [0.97, 1],
-                duration: 1000,
-            }, '-=800');
-    }, []);
-
     return (
         <ConnectionProvider endpoint="https://api.mainnet-beta.solana.com">
             <WalletProvider wallets={[]} autoConnect>
@@ -90,7 +40,7 @@ function App() {
                         <div className="scan-beam"></div>
 
                         {/* Header */}
-                        <header className="app-header" ref={headerRef} style={{ opacity: 0 }}>
+                        <header className="app-header">
                             <div className="logo">
                                 <span className="logo-icon">⬡</span>
                                 <span className="logo-text">SOLSWAP</span>
@@ -110,39 +60,38 @@ function App() {
                             <section className="left-panel">
                                 <div className="left-content">
                                     {/* Hero */}
-                                    <div className="hero-section" ref={heroRef}>
-                                        <div className="hero-badge" style={{ opacity: 0 }}>
+                                    <div className="hero-section">
+                                        <div className="hero-badge">
                                             <span className="badge-dot"></span>
                                             SOLANA PROTOCOL
                                         </div>
-                                        <h1 className="hero-title" style={{ opacity: 0 }}>
+                                        <h1 className="hero-title">
                                             SWAP IN<br />THE SHADOWS
                                         </h1>
-                                        <p className="hero-subtitle" style={{ opacity: 0 }}>
+                                        <p className="hero-subtitle">
                                             Phantom liquidity on Solana. Best rates aggregated across every DEX.
                                         </p>
                                     </div>
 
-
                                     {/* Stats */}
-                                    <div className="stats-row" ref={statsRef}>
-                                        <div className="stat-item" style={{ opacity: 0 }}>
+                                    <div className="stats-row">
+                                        <div className="stat-item">
                                             <span className="stat-value">{'<'}0.5s</span>
                                             <span className="stat-label">FINALITY</span>
                                         </div>
-                                        <div className="stat-divider" style={{ opacity: 0 }}></div>
-                                        <div className="stat-item" style={{ opacity: 0 }}>
+                                        <div className="stat-divider"></div>
+                                        <div className="stat-item">
                                             <span className="stat-value">20+</span>
                                             <span className="stat-label">DEX ROUTES</span>
                                         </div>
                                     </div>
 
                                     {/* Tech tags */}
-                                    <div className="tech-tags" ref={tagsRef}>
-                                        <span className="tech-tag" style={{ opacity: 0 }}>JUPITER V6</span>
-                                        <span className="tech-tag" style={{ opacity: 0 }}>SPL TOKENS</span>
-                                        <span className="tech-tag" style={{ opacity: 0 }}>NON-CUSTODIAL</span>
-                                        <span className="tech-tag" style={{ opacity: 0 }}>OPEN SOURCE</span>
+                                    <div className="tech-tags">
+                                        <span className="tech-tag">JUPITER V6</span>
+                                        <span className="tech-tag">SPL TOKENS</span>
+                                        <span className="tech-tag">NON-CUSTODIAL</span>
+                                        <span className="tech-tag">OPEN SOURCE</span>
                                     </div>
                                 </div>
                             </section>
@@ -155,7 +104,7 @@ function App() {
 
                             {/* RIGHT — sticky swap card */}
                             <section className="right-panel">
-                                <div className="right-content" ref={cardRef} style={{ opacity: 0 }}>
+                                <div className="right-content">
                                     <SwapCard />
                                     <div className="powered-by">
                                         POWERED BY <a href="https://jup.ag" target="_blank" rel="noopener noreferrer">JUPITER</a>

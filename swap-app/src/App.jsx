@@ -1,5 +1,3 @@
-import { useEffect, useRef } from 'react';
-import anime from 'animejs';
 import { SwapCard } from './components/SwapCard';
 
 // Wallet adapter imports
@@ -11,60 +9,6 @@ import {
 import '@solana/wallet-adapter-react-ui/styles.css';
 
 function App() {
-    const headerRef = useRef(null);
-    const heroRef = useRef(null);
-
-    const statsRef = useRef(null);
-    const tgRef = useRef(null);
-    const cardRef = useRef(null);
-
-    useEffect(() => {
-        // anime.js staggered entrance
-        const tl = anime.timeline({
-            easing: 'easeOutExpo',
-            duration: 900,
-        });
-
-        tl.add({
-            targets: headerRef.current,
-            opacity: [0, 1],
-            translateY: [-20, 0],
-            duration: 600,
-        })
-            .add({
-                targets: heroRef.current?.children,
-                opacity: [0, 1],
-                translateX: [-40, 0],
-                delay: anime.stagger(120),
-            }, '-=400')
-
-            .add({
-                targets: statsRef.current?.children,
-                opacity: [0, 1],
-                translateY: [16, 0],
-                delay: anime.stagger(100),
-            }, '-=400')
-            .add({
-                targets: tgRef.current,
-                opacity: [0, 1],
-                translateY: [30, 0],
-                duration: 800,
-            }, '-=200')
-            .add({
-                targets: tgRef.current?.querySelectorAll('.tg-feature'),
-                opacity: [0, 1],
-                translateY: [16, 0],
-                delay: anime.stagger(80),
-            }, '-=500')
-            .add({
-                targets: cardRef.current,
-                opacity: [0, 1],
-                translateX: [50, 0],
-                scale: [0.97, 1],
-                duration: 1000,
-            }, '-=800');
-    }, []);
-
     return (
         <ConnectionProvider endpoint="https://api.mainnet-beta.solana.com">
             <WalletProvider wallets={[]} autoConnect>
@@ -96,7 +40,7 @@ function App() {
                         <div className="scan-beam"></div>
 
                         {/* Header */}
-                        <header className="app-header" ref={headerRef} style={{ opacity: 0 }}>
+                        <header className="app-header">
                             <div className="logo">
                                 <span className="logo-icon">⬡</span>
                                 <span className="logo-text">SOLSWAP</span>
@@ -116,35 +60,35 @@ function App() {
                             <section className="left-panel">
                                 <div className="left-content">
                                     {/* Hero */}
-                                    <div className="hero-section" ref={heroRef}>
-                                        <div className="hero-badge" style={{ opacity: 0 }}>
+                                    <div className="hero-section">
+                                        <div className="hero-badge">
                                             <span className="badge-dot"></span>
                                             SOLANA PROTOCOL
                                         </div>
-                                        <h1 className="hero-title" style={{ opacity: 0 }}>
+                                        <h1 className="hero-title">
                                             SWAP IN<br />THE SHADOWS
                                         </h1>
-                                        <p className="hero-subtitle" style={{ opacity: 0 }}>
+                                        <p className="hero-subtitle">
                                             Best rates aggregated across every DEX.
                                         </p>
                                     </div>
 
 
                                     {/* Stats */}
-                                    <div className="stats-row" ref={statsRef}>
-                                        <div className="stat-item" style={{ opacity: 0 }}>
+                                    <div className="stats-row">
+                                        <div className="stat-item">
                                             <span className="stat-value">{'<'}0.5s</span>
                                             <span className="stat-label">FINALITY</span>
                                         </div>
-                                        <div className="stat-divider" style={{ opacity: 0 }}></div>
-                                        <div className="stat-item" style={{ opacity: 0 }}>
+                                        <div className="stat-divider"></div>
+                                        <div className="stat-item">
                                             <span className="stat-value">20+</span>
                                             <span className="stat-label">DEX ROUTES</span>
                                         </div>
                                     </div>
 
                                     {/* Telegram Bot Section */}
-                                    <div className="tg-section" ref={tgRef} style={{ opacity: 0 }}>
+                                    <div className="tg-section">
                                         <div className="tg-header">
                                             <div className="tg-icon">
                                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -214,7 +158,7 @@ function App() {
 
                             {/* RIGHT — sticky swap card */}
                             <section className="right-panel">
-                                <div className="right-content" ref={cardRef} style={{ opacity: 0 }}>
+                                <div className="right-content">
                                     <SwapCard />
                                     <div className="powered-by">
                                         POWERED BY <a href="https://jup.ag" target="_blank" rel="noopener noreferrer">JUPITER</a>
